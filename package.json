@@ -1,14 +1,13 @@
 {
-	"name": "express-ms",
+	"name": "gd-express-ms",
 	"version": "0.1.0",
 	"description": "Utilities to bootstrap a express based microservice",
 	"scripts": {
 		"build": "tsc",
+		"lint": "eslint . --ext .ts",
 		"prestart": "npm run lint && tsc",
 		"test": "jest --coverage",
 		"devtest": "jest --coverage --watch",
-		"lint": "eslint . --ext .ts",
-		"start": "node .",
 		"dev": "nodemon --watch src -e ts,ejs --exec npm run prestart"
 	},
 	"author": {
