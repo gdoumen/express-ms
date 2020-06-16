@@ -1,6 +1,6 @@
 {
 	"name": "gd-express-ms",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Utilities to bootstrap a express based microservice",
 	"scripts": {
 		"build": "tsc",
@@ -41,7 +41,7 @@
 		"typescript": "^3.8.3"
 	},
 	"files": [
-		"build/"
+		"lib/"
 	],
 	"main": "lib/src/index.js",
 	"directories": {
