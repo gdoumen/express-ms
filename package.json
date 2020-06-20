@@ -1,56 +1,60 @@
 {
-	"name": "gd-express-ms",
-	"version": "0.1.1",
-	"description": "Utilities to bootstrap a express based microservice",
-	"scripts": {
-		"build": "tsc",
-		"lint": "eslint . --ext .ts",
-		"prestart": "npm run lint && tsc",
-		"test": "jest --coverage",
-		"devtest": "jest --coverage --watch",
-		"dev": "nodemon --watch src -e ts,ejs --exec npm run prestart"
-	},
-	"author": {
-		"name": "Guido Doumen",
-		"email": "git@doumen-laumen.de"
-	},
-	"license": "MIT",
-	"engines": {
-		"node": ">=10.0.0"
-	},
-	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "^2.28.0",
-		"@typescript-eslint/parser": "^2.28.0",
-		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
-		"gd-eventlog": "^0.1.11",
-		"on-finished": "^2.3.0",
-		"prom-client": "^12.0.0",
-		"sniffr": "^1.2.0"
-	},
-	"devDependencies": {
-		"@types/express": "^4.17.6",
-		"@types/jest": "^25.2.1",
-		"@types/node": "^10.0.0",
-		"@typescript-eslint/eslint-plugin-tslint": "^3.3.0",
-		"eslint": "^6.8.0",
-		"jest": "^25.2.7",
-		"jest-express": "^1.12.0",
-		"nodemon": "^2.0.4",
-		"ts-jest": "^25.3.1",
-		"typescript": "^3.8.3"
-	},
-	"files": [
-		"lib/"
-	],
-	"main": "lib/src/index.js",
-	"directories": {
-		"example": "./sample",
-		"lib": "./src"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/gdoumen/express-ms.git"
-	},
-	"bugs": "https://github.com/gdoumen/express-ms/issues"
+  "name": "gd-express-ms",
+  "version": "0.1.1",
+  "description": "Utilities to bootstrap a express based microservice",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "prestart": "npm run lint && tsc",
+    "test": "jest --coverage",
+    "devtest": "jest --coverage --watch",
+    "dev": "nodemon --watch src -e ts,ejs --exec npm run prestart",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "author": {
+    "name": "Guido Doumen",
+    "email": "git@doumen-laumen.de"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "gd-eventlog": "^0.1.11",
+    "on-finished": "^2.3.0",
+    "prom-client": "^12.0.0",
+    "sniffr": "^1.2.0",
+    "snyk": "^1.346.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^10.0.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^3.3.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.2.7",
+    "jest-express": "^1.12.0",
+    "nodemon": "^2.0.4",
+    "ts-jest": "^25.3.1",
+    "typescript": "^3.8.3"
+  },
+  "files": [
+    "lib/"
+  ],
+  "main": "lib/src/index.js",
+  "directories": {
+    "example": "./sample",
+    "lib": "./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gdoumen/express-ms.git"
+  },
+  "bugs": "https://github.com/gdoumen/express-ms/issues",
+  "snyk": true
 }
