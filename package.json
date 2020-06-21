@@ -1,6 +1,6 @@
 {
   "name": "gd-express-ms",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Utilities to bootstrap a express based microservice",
   "scripts": {
     "build": "tsc",
@@ -22,16 +22,16 @@
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.28.0",
+    "@typescript-eslint/parser": "^2.34.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "gd-eventlog": "^0.1.11",
+    "gd-eventlog": "^0.1.15",
     "on-finished": "^2.3.0",
     "prom-client": "^12.0.0",
-    "sniffr": "^1.2.0",
-    "snyk": "^1.346.0"
+    "sniffr": "^1.2.0"
   },
   "devDependencies": {
+    "snyk": "^1.346.0",
     "@types/express": "^4.17.6",
     "@types/jest": "^25.2.1",
     "@types/node": "^10.0.0",
@@ -46,7 +46,8 @@
   "files": [
     "lib/"
   ],
-  "main": "lib/src/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "example": "./sample",
     "lib": "./src"
