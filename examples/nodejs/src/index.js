@@ -1,21 +1,22 @@
 
 /* istanbul ignore file */
-import {config as initDotEnv } from 'dotenv'
-import path from 'path'
-import {name,version} from '../package.json'
+const {name,version} = require ( '../package.json')
+const {config } = require ('dotenv')
+const path = require ('path')
+const process = require( 'process')
 
-import HelloController from './controllers/hello'
-import {Server, requestLogger,responseSender,bodyParser,ProbeController,MetricController} from 'gd-express-ms'
+const HelloController = require( './controllers/hello')
+const {Server, requestLogger,responseSender,bodyParser,ProbeController,MetricController} = require( 'gd-express-ms')
 
 
 const DEFAULT_PORT = 3000;
 
-initDotEnv();
+config();
 
-const port: number = Number(process.env.PORT) || DEFAULT_PORT;
+const port= Number(process.env.PORT) || DEFAULT_PORT;
 const directory = process.env.BASE_DIR || path.join(__dirname,'/public')
 
-function logFilter  (context: string, event?: any): boolean {
+function logFilter  (context, event) {
     if ( event===undefined)
         return false;
 
@@ -33,7 +34,7 @@ const server = new Server({
     preProcessors:[
         bodyParser.json(),
         bodyParser.urlencoded({extended:true}),
-        requestLogger( {metrics:true, prefix:'express-ms'} )],
+        requestLogger( {metrics:true, prefix:'express'} )],
     postProcessors:[
         responseSender],
     controllers: [
