@@ -254,3 +254,33 @@ describe ('init',()=> {
     })
 
 });
+
+
+describe ('shutdown',()=> {
+
+    let server;
+    let realProcessExit
+    beforeEach( ()=> {
+        realProcessExit = process.exit;
+        server = new Server( {name:'test',version:'1',port:2000, controllers: new MockConroller(),autoInit:false});
+        process.exit = jest.fn( () => {throw 'exit'});
+        server.logger.log = jest.fn();  
+    })
+
+    afterAll( ()=> {
+        process.exit = realProcessExit;
+    })
+
+    test('only mandatory parameters', ()=> {
+        
+        try {
+            server.shutdown();
+        }
+        catch (err) {
+            // intentially left empty: we expect to receive an exception
+        }
+
+        expect(process.exit).toHaveBeenCalledTimes(1);
+    })
+
+})

@@ -43,6 +43,8 @@ export default class Server {
         EventLogger.registerAdapter(new ConsoleAdapter(), this.opts.logFilter)        
         if (this.opts.autoInit)
             this.init();
+        process.on('SIGINT', ()=> { this.shutdown(); });
+        process.on('SIGTERM', ()=> { this.shutdown(); });
     }
 
     serveStatic(directory: string,opts?): Handler {
@@ -96,6 +98,12 @@ export default class Server {
     start(): void {
         this.app.listen(this.opts.port, () => this.logger.log(`Server listening on port ${this.opts.port}!`));
 
+    }
+
+    
+    shutdown(): void {
+        this.logger.log('Server shutting down');
+        process.exit(); 
     }
 
 
