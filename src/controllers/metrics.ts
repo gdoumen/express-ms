@@ -14,8 +14,13 @@ export default class MetricController extends BaseController implements Controll
         req['logIgnore'] = true;
 
         res.set('Content-Type', register.contentType);
-        res.end(register.metrics());
-        next();
+        register.metrics().then( (metrics) => {
+            res.send(metrics);
+            next();    
+        })
+        .catch( () => {
+            this.setResponse(res,{ status:500, error:true, message:'server error'})
+        })
     }
 
 }
