@@ -6,6 +6,7 @@ export interface ControllerResponse {
     error?;
     message?: string;
     json?: object;
+    file?: string;
 }
 
 export default interface Controller {

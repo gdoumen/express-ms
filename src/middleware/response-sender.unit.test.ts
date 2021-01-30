@@ -13,10 +13,11 @@ describe ( 'responseSender' ,() => {
         response = {};
         response.status = jest.fn( (code: number): Response => { return response as Response} )
         response.send = jest.fn();
+        response.sendFile = jest.fn();
     })
 
 
-    test ( 'succes' , ()=> {
+    test ( 'succes:json' , ()=> {
 
         response['result'] = { 
             status: 200,
@@ -27,6 +28,19 @@ describe ( 'responseSender' ,() => {
 
         expect(response.status).toHaveBeenCalledWith(200)
         expect(response.send).toHaveBeenCalledWith({a:1,b:2})            
+        expect(next).not.toHaveBeenCalled()
+    })
+
+    test ( 'succes:file' , ()=> {
+
+        response['result'] = { 
+            status: 200,
+            file: './somefile'
+        }     
+        const next = jest.fn();
+        responseSender( request as Request,response as Response,next)
+
+        expect(response.sendFile).toHaveBeenCalledWith('./somefile')            
         expect(next).not.toHaveBeenCalled()
     })
 

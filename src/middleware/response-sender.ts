@@ -8,7 +8,7 @@ const responseSender = (req: Request,res: Response,next: NextFunction): void => 
     }
     const result = res['result'];
 
-    if ( result.error===undefined && result.json===undefined)
+    if ( result.error===undefined && result.json===undefined && result.file===undefined)
         return next();
 
 
@@ -24,6 +24,11 @@ const responseSender = (req: Request,res: Response,next: NextFunction): void => 
     }
     
     else {
+
+        if ( result.file!==undefined) {
+            return res.sendFile(result.file);    
+        }
+
         const status = result.status || 200;
         res.status(status).send(result.json);
         return;
