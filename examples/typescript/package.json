@@ -23,7 +23,7 @@
 	"dependencies": {
 		"@typescript-eslint/eslint-plugin": "^2.28.0",
 		"@typescript-eslint/parser": "^2.28.0",
-		"dotenv": "^8.2.0",
+		"dotenv": "^8.6.0",
 		"express": "^4.17.1",
 		"gd-express-ms": "^0.1.11"
 	},
