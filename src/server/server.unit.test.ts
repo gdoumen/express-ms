@@ -34,6 +34,8 @@ describe ('Constructor',()=> {
     })
     afterEach( ()=> {
         Server.prototype.init = init;
+        process.removeAllListeners();
+    
     })
 
     test('only mandatory parameters', ()=> {
@@ -61,6 +63,11 @@ describe ('Constructor',()=> {
 describe ('serveStatic',()=> {
 
     let server;
+
+    afterEach( ()=> { 
+        process.removeAllListeners();
+    })
+
     
     test('wo /', ()=> {
         const assets = {path:'/assets', directory:'/dir', opts:{ dummy:true}};
@@ -101,6 +108,9 @@ describe ('initAssets',()=> {
         server.serveStatic = jest.fn();
         
     })
+    afterEach( ()=> { 
+        process.removeAllListeners();
+    })
 
     test('only mandatory parameters', ()=> {
         const assets = {path:'/assets', directory:'/dir', opts:{ dummy:true}};
@@ -135,6 +145,11 @@ describe ('initMiddleware',()=> {
         server.app.use = jest.fn();        
     })
 
+    afterEach( ()=> { 
+        process.removeAllListeners();
+    })
+
+
     test('multiple middleware functions', ()=> {
         const mw1 = jest.fn();
         const mw2 = jest.fn();
@@ -168,6 +183,10 @@ describe ('initRoutes',()=> {
         server = new Server( {name:'test',version:'1',port:2000, controllers: new MockConroller(),autoInit:false});
         server.app.use = jest.fn();        
     })
+    afterEach( ()=> { 
+        process.removeAllListeners();
+    })
+
 
     test('only mandatory parameters', ()=> {
         const route1 = new MockConroller('/1');
@@ -215,6 +234,9 @@ describe ('start',()=> {
     beforeEach( ()=> {
         server = new Server( {name:'test',version:'1',port:2000, controllers: new MockConroller(),autoInit:false});
     })
+    afterEach( ()=> { 
+        process.removeAllListeners();
+    })
 
     test('only mandatory parameters', ()=> {
         server.app.listen = jest.fn();        
@@ -247,6 +269,10 @@ describe ('init',()=> {
         srv.initRoutes = jest.fn();        
     })
 
+    afterEach( ()=> { 
+        process.removeAllListeners();
+    })
+
     test('only mandatory parameters',   ()=> {
         srv.init()
 
@@ -269,6 +295,7 @@ describe ('shutdown',()=> {
 
     afterAll( ()=> {
         process.exit = realProcessExit;
+        process.removeAllListeners();
     })
 
     test('only mandatory parameters', ()=> {

@@ -1,7 +1,5 @@
 import responseSender from './response-sender'
 import {Request,Response} from 'express'
-import { Request as MockRequest } from 'jest-express/lib/request';
-import { Response as MockResponse} from 'jest-express/lib/response';
 
 describe ( 'responseSender' ,() => {
 

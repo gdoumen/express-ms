@@ -43,7 +43,9 @@ export default class Server {
         EventLogger.registerAdapter(new ConsoleAdapter(), this.opts.logFilter)        
         if (this.opts.autoInit)
             this.init();
+        /* istanbul ignore next */
         process.on('SIGINT', ()=> { this.shutdown(); });
+        /* istanbul ignore next */
         process.on('SIGTERM', ()=> { this.shutdown(); });
     }
 
