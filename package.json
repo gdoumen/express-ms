@@ -23,7 +23,7 @@
     "express": "^4.17.1",
     "gd-eventlog": "^0.1.22",
     "on-finished": "^2.3.0",
-    "prom-client": "^14.0.0",
+    "prom-client": "^14.0.1",
     "sniffr": "^1.2.0"
   },
   "devDependencies": {
