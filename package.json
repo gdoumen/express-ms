@@ -8,7 +8,9 @@
     "prestart": "npm run lint && tsc",
     "test": "jest --coverage",
     "devtest": "jest --coverage --watch",
-    "dev": "nodemon --watch src -e ts,ejs --exec npm run prestart"
+    "dev": "nodemon --watch src -e ts,ejs --exec npm run prestart",
+    "postversion": "git push --tags && npm run build && npm publish"
+
   },
   "author": {
     "name": "Guido Doumen",
