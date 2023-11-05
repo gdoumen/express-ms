@@ -15,7 +15,7 @@ initDotEnv();
 const port: number = Number(process.env.PORT) || DEFAULT_PORT;
 const directory = process.env.BASE_DIR || path.join(__dirname,'/public')
 
-function logFilter  (context: string, event?: any): boolean {
+function logFilter  (context: string, event?): boolean {
     if ( event===undefined)
         return false;
 
@@ -33,7 +33,7 @@ const server = new Server({
     preProcessors:[
         bodyParser.json(),
         bodyParser.urlencoded({extended:true}),
-        requestLogger( {metrics:true, prefix:'express-ms'} )],
+        requestLogger( {metrics:true, prefix:'express_ms'} )],
     postProcessors:[
         responseSender],
     controllers: [
