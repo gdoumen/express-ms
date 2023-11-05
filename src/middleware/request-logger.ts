@@ -1,10 +1,8 @@
 import { Request, Response,NextFunction,RequestHandler } from 'express'
 import {EventLogger} from 'gd-eventlog'
 import onFinished from 'on-finished'
-import promClient,{register,Counter} from 'prom-client'
+import {Counter} from 'prom-client'
 import UAAnalyzer from 'sniffr'
-
-let reqId = 0;
 
 
 const getQuery = (req: Request): string => {
@@ -37,32 +35,33 @@ function getOS(ua: UAAnalyzer, version = false): string {
         return `${os.name}`
 } 
 
+export type RequestLoggerProps = {
+    prefix?:string;
+    metrics?: boolean;
+    logger?: EventLogger;
+    ua?: UAAnalyzer;
+}
 
-class Logger {
 
-    logger: EventLogger;
-    reqId: number;
-    metrics: boolean | false;
-    requestCount?: Counter<string>;
-    requestDuration?: Counter<string>;
-    ua: UAAnalyzer;
-    prefix: string;
+export class Logger {
 
-    constructor ( opts) {
-        this.ua = new UAAnalyzer();
-        this.logger = new EventLogger('request');
-        this.reqId = 0;
-        this.prefix = 'http';
-        this.metrics = false;
+    protected logger: EventLogger;
+    protected prefix: string;
+    protected metrics: boolean;
+    protected requestCount?: Counter<string>;
+    protected requestDuration?: Counter<string>;
+    protected ua: UAAnalyzer;
+    protected static reqId: number = 0;
+    
 
-        if (opts!==undefined) {
-            this.metrics = opts.metrics;
-            this.prefix = opts.prefix || 'http'
-            if (this.metrics)
-                this.initMetrics();
-        }
-            
+    constructor ( opts: RequestLoggerProps) {
+        this.ua = opts.ua || new UAAnalyzer();
+        this.logger = opts.logger || new EventLogger('request');
         
+        this.metrics = opts.metrics || false;
+        this.prefix = opts.prefix || 'http'
+        if (this.metrics)
+            this.initMetrics();
     }
 
     initMetrics(): void {
@@ -118,7 +117,7 @@ class Logger {
         this.ua.sniff(req.headers['user-agent'])
         req['ts'] = new Date();
 
-        this.logger.set({id:++reqId})
+        this.logger.set({id:++Logger.reqId})
 
         const qstr = getQuery(req);
         this.logger.logEvent({message:`${req.method} ${req.path}${qstr}`,headers:req.headers,body:req.body,os:`${getOS(this.ua,true)}`})
@@ -131,7 +130,7 @@ class Logger {
 
 
 
-const requestLogger = ( opts): RequestHandler => {
+const requestLogger = ( opts:RequestLoggerProps): RequestHandler => {
 
     const logger = new Logger(opts);
     return logger.requestLogger.bind(logger);

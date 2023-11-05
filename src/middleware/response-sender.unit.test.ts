@@ -9,7 +9,7 @@ describe ( 'responseSender' ,() => {
     beforeEach( ()=> {
         request = {};
         response = {};
-        response.status = jest.fn( (code: number): Response => { return response as Response} )
+        response.status = jest.fn( (): Response => { return response as Response} )
         response.send = jest.fn();
         response.sendFile = jest.fn();
     })
