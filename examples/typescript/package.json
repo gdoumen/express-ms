@@ -24,7 +24,7 @@
 		"@typescript-eslint/eslint-plugin": "^6.4.0",
 		"@typescript-eslint/parser": "^6.4.0",
 		"dotenv": "^16.3.1",
-		"express": "^4.18.2",
+		"express": "^4.19.2",
 		"gd-express-ms": "file:../..",
 		"node-notifier": "^10.0.1"
 	},
