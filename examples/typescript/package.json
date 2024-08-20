@@ -21,24 +21,24 @@
 		"node": ">=10.0.0"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "^6.4.0",
-		"@typescript-eslint/parser": "^6.4.0",
-		"dotenv": "^16.3.1",
+		"@typescript-eslint/eslint-plugin": "^8.2.0",
+		"@typescript-eslint/parser": "^8.2.0",
+		"dotenv": "^16.4.5",
 		"express": "^4.19.2",
 		"gd-express-ms": "file:../..",
 		"node-notifier": "^10.0.1"
 	},
 	"devDependencies": {
-		"@types/express": "^4.17.17",
-		"@types/jest": "^29.5.3",
-		"@types/node": "^20.5.1",
-		"@typescript-eslint/eslint-plugin-tslint": "^6.4.0",
+		"@types/express": "^4.17.21",
+		"@types/jest": "^29.5.12",
+		"@types/node": "^22.4.1",
+		"@typescript-eslint/eslint-plugin-tslint": "^6.21.0",
 		"eslint": "^8.47.0",
-		"jest": "^29.6.2",
+		"jest": "^29.7.0",
 		"jest-express": "^1.12.0",
-		"nodemon": "^3.0.1",
-		"ts-jest": "^29.1.1",
-		"typescript": "^5.1.6"
+		"nodemon": "^3.1.4",
+		"ts-jest": "^29.2.4",
+		"typescript": "^5.5.4"
 	},
 	"files": [
 		"build/"
